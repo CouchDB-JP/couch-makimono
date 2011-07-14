@@ -54,7 +54,7 @@ epub:
 import os, sys
 import shutil
 from traceback import format_exception
-from makimono.util import datetime_str
+from makimono.util import datetime_str, is_valid_item_id
 from couchdbkit import Database
 from couchdbkit.designer.fs import FSDoc
 
@@ -143,7 +143,7 @@ class Publisher(object):
                     f.write(self._generate_conf(doc))
             elif t == 'item':
                 filepath = doc['_id']
-                if not util.is_valid_item_id(filepath):
+                if not is_valid_item_id(filepath):
                     raise Exception('invalid _id')
                 # source
                 if filepath[0] == '/':
