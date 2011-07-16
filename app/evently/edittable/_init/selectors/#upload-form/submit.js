@@ -16,7 +16,7 @@ function(e){
 	}
 	
 	$(this).ajaxSubmit({
-		url: app.db.uri + fdoc._id,
+		url: app.db.uri + encodeURIComponent(fdoc._id),
 		success: function(response){
 			form.trigger('navimessage', 'file (' + basename(data._attachments) + ') uploaded successfully.');
 			form.trigger('_init');
